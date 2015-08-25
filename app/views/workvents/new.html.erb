@@ -1,0 +1,68 @@
+<!-- Validation failure messages -->
+<% if @workvent.errors.any? %>
+  <% @workvent.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add a Work Vent</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_workvent" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for work_topic -->
+      <div class="form-group">
+        <label for="work_topic" class="control-label">
+          Work topic
+        </label>
+
+        <input type="text" id="work_topic" name="work_topic" placeholder="Work topic" class="form-control" value="<%= @workvent.work_topic %>">
+      </div>
+
+      <!-- Label and input for urgency -->
+      <div class="form-group">
+        <label for="urgency" class="control-label">
+          Urgency
+        </label>
+
+
+      <select name="urgency">
+      <option value="1"selected>1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+        </select>
+
+      </div>
+
+      <!-- Label and input for story -->
+      <div class="form-group">
+        <label for="story" class="control-label">
+          Story
+        </label>
+
+        <textarea id="story" name="story" placeholder="Story" class="form-control" rows="3"><%= @workvent.story %></textarea>
+      </div>
+
+      <button class="btn btn-success">
+        Create Work Vent
+      </button>
+      or
+      <a href="/workvents">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<!-- Validation failure messages -->
+<% if @lifevent.errors.any? %>
+  <% @lifevent.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Lifevent #<%= @lifevent.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_lifevent/<%= @lifevent.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for life_topic -->
+      <div class="form-group">
+        <label for="life_topic" class="control-label">
+          Life topic
+        </label>
+
+        <input type="text" id="life_topic" name="life_topic" placeholder="Life topic" class="form-control" value="<%= @lifevent.life_topic %>">
+      </div>
+
+      <!-- Label and input for urgency -->
+      <div class="form-group">
+        <label for="urgency" class="control-label">
+          Urgency
+        </label>
+  <select name="urgency">
+  <option value="1"selected>1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select>
+
+
+      </div>
+
+      <!-- Label and input for story -->
+      <div class="form-group">
+        <label for="story" class="control-label">
+          Story
+        </label>
+
+        <textarea id="story" name="story" placeholder="Story" class="form-control" rows="3"><%= @lifevent.story %></textarea>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Lifevent
+      </button>
+      or
+      <a href="/lifevents/<%= @lifevent.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @vent.errors.any? %>
+  <% @vent.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Vent #<%= @vent.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_vent/<%= @vent.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for topic -->
+      <div class="form-group">
+        <label for="topic" class="control-label">
+          Topic
+        </label>
+
+        <input type="text" id="topic" name="topic" placeholder="Topic" class="form-control" value="<%= @vent.topic %>">
+      </div>
+
+      <!-- Label and input for urgency -->
+      <div class="form-group">
+        <label for="urgency" class="control-label">
+          Urgency
+        </label>
+
+        <input type="text" id="urgency" name="urgency" placeholder="Urgency" class="form-control" value="<%= @vent.urgency %>">
+      </div>
+
+      <!-- Label and input for story -->
+      <div class="form-group">
+        <label for="story" class="control-label">
+          Story
+        </label>
+
+        <textarea id="story" name="story" placeholder="Story" class="form-control" rows="3"><%= @vent.story %></textarea>
+      </div>
+
+      <button class="btn btn-warning">
+        Update Vent
+      </button>
+      or
+      <a href="/vents/<%= @vent.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

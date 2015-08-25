@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Workvent #<%= @workvent.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Work topic</dt>
+      <dd><%= @workvent.work_topic %></dd>
+
+      <dt>Urgency</dt>
+      <dd><%= @workvent.urgency %></dd>
+
+      <dt>Story</dt>
+      <dd><%= @workvent.story %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/workvents" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/workvents/<%= @workvent.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_workvent/<%= @workvent.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

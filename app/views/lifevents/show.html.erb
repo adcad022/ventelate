@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Lifevent #<%= @lifevent.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Life topic</dt>
+      <dd><%= @lifevent.life_topic %></dd>
+
+      <dt>Urgency</dt>
+      <dd><%= @lifevent.urgency %></dd>
+
+      <dt>Story</dt>
+      <dd><%= @lifevent.story %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/lifevents" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/lifevents/<%= @lifevent.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_lifevent/<%= @lifevent.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

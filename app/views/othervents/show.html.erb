@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Othervent #<%= @othervent.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Other topic</dt>
+      <dd><%= @othervent.other_topic %></dd>
+
+      <dt>Urgency</dt>
+      <dd><%= @othervent.urgency %></dd>
+
+      <dt>Story</dt>
+      <dd><%= @othervent.story %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/othervents" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/othervents/<%= @othervent.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_othervent/<%= @othervent.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
