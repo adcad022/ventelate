@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Otherlift #<%= @otherlift.id %></h3>
+  <h3>Edit Otherlift #<%= @otherlift.othervent.other_topic %></h3>
 </div>
 
 <div class="row">
@@ -20,21 +20,11 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @otherlift.user_id %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="hidden" value="<%= @otherlift.user_id %>">
       </div>
 
       <!-- Label and input for othervent_id -->
-      <div class="form-group">
-        <label for="othervent_id" class="control-label">
-          Othervent
-        </label>
-
-        <input type="text" id="othervent_id" name="othervent_id" placeholder="Othervent" class="form-control" value="<%= @otherlift.othervent_id %>">
-      </div>
 
       <!-- Label and input for support -->
       <div class="form-group">

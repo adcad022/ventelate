@@ -1,3 +1,9 @@
+<center>
+<div class="jumbotron">
+  <h1>Welcome to VentElate!</h1>
+</div>
+
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -6,6 +12,22 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sex %><br />
+    M <%= f.check_box :sex, autofocus: true %>
+    F <%= f.check_box :sex, autofocus: true %>
   </div>
 
   <div class="field">
@@ -27,3 +49,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</center>

@@ -36,7 +36,7 @@ class WorkliftsController < ApplicationController
     @worklift.support = params[:support]
 
     if @worklift.save
-      redirect_to "/worklifts", :notice => "THANK YOU for the support."
+      redirect_to "/workvents", :notice => "THANK YOU for the support."
     else
       render 'edit'
     end

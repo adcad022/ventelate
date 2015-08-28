@@ -5,6 +5,6 @@ validates :relationshipvent_id, :presence => true
 validates :support, :presence => true
 
 belongs_to :user
-belongs_to :relationshipvents
+belongs_to :relationshipvent
 
 end

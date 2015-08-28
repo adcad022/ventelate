@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Worklift #<%= @worklift.id %></h3>
+  <h3>Edit worklift about <%= @worklift.workvent.work_topic %></h3>
 </div>
 
 <div class="row">
@@ -19,21 +19,8 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @worklift.user_id %>">
-      </div>
-
-      <!-- Label and input for workvent_id -->
-      <div class="form-group">
-        <label for="workvent_id" class="control-label">
-          Workvent
-        </label>
-
-        <input type="text" id="workvent_id" name="workvent_id" placeholder="Workvent" class="form-control" value="<%= @worklift.workvent_id %>">
+      <div>
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="hidden" value="<%= @worklift.user_id %>">
       </div>
 
       <!-- Label and input for support -->
