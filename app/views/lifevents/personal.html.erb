@@ -17,6 +17,7 @@
       <% @lifevents.each do |lifevent| %>
 
       <% if lifevent.user_id.to_i == current_user.id.to_i %>
+
       <tr>
         <td><%= lifevent.life_topic %></td>
         <td><%= lifevent.urgency %></td>
