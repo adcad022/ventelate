@@ -1,0 +1,48 @@
+<!-- Validation failure messages -->
+<% if @worklift.errors.any? %>
+  <% @worklift.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Worklift</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_worklift" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <input name="user_id" type="hidden" value="<%= current_user.id %>">
+
+<!--       <input name="workvent_id" type="hidden" value="Hello"> -->
+
+    <input name="workvent_id" value="<%= @workvent.id %>">
+
+<%= select_tag(:workvent_id, options_from_collection_for_select(Workvent.all, :id, :id, @worklift.workvent_id), :class => "form-control") %>
+
+     </div>
+
+      <!-- Label and input for support -->
+      <div class="form-group">
+        <label for="support" class="control-label">
+          Support
+        </label>
+
+        <textarea id="support" name="support" placeholder="Support" class="form-control" rows="3"><%= @worklift.support %></textarea>
+      </div>
+
+      <button class="btn btn-success">
+        Create Worklift
+      </button>
+      or
+      <a href="/worklifts">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -5,6 +5,11 @@ class WorkventsController < ApplicationController
 
   def show
     @workvent = Workvent.find(params[:id])
+    @worklift = Worklift.new
+  end
+
+  def personal
+    @workvents = Workvent.all
   end
 
   def new
@@ -13,18 +18,15 @@ class WorkventsController < ApplicationController
 
   def create
     @workvent = Workvent.new
+    @workvent.user_id = params[:user_id]
     @workvent.work_topic = params[:work_topic]
-    @workvent.urgency = params[:urgency]
-
-    @urgency = ["1","2","3"]
-    @urgency.each do|u|
-    puts u
-    end
-
+    @workvent.urgency = params[:urgency].to_i
     @workvent.story = params[:story]
 
-    if @workvent.save
-      redirect_to "/workvents", :notice => "Workvent created successfully."
+    if @workvent.save && @workvent.urgency > 7
+      redirect_to "/workvents", :notice => "Workvent created. Consider Seeking Professional Help at <a href= 'https://therapists.psychologytoday.com/rms/'>https://therapists.psychologytoday.com/rms/</a>"
+    elsif @workvent.save && @workvent.urgency <= 7
+      redirect_to "/workvents", :notice => "Workvent created"
     else
       render 'new'
     end
@@ -36,14 +38,17 @@ class WorkventsController < ApplicationController
 
   def update
     @workvent = Workvent.find(params[:id])
+    @workvent.user_id = params[:user_id]
     @workvent.work_topic = params[:work_topic]
     @workvent.urgency = params[:urgency]
     @workvent.story = params[:story]
 
-    if @workvent.save
-      redirect_to "/workvents", :notice => "Workvent updated successfully."
+    if @workvent.save && @workvent.urgency > 7
+      redirect_to "/workvents", :notice => "Workvent created. Consider Seeking Professional Help at <a href= 'https://therapists.psychologytoday.com/rms/'>https://therapists.psychologytoday.com/rms/</a>"
+    elsif @workvent.save && @workvent.urgency <= 7
+      redirect_to "/workvents", :notice => "Workvent created"
     else
-      render 'edit'
+      render 'new'
     end
   end
 

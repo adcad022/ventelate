@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Lifelift #<%= @lifelift.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>User</dt>
+      <dd><%= @lifelift.user_id %></dd>
+
+      <dt>Lifevent</dt>
+      <dd><%= @lifelift.lifevent_id %></dd>
+
+      <dt>Support</dt>
+      <dd><%= @lifelift.support %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/lifelifts" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/lifelifts/<%= @lifelift.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_lifelift/<%= @lifelift.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

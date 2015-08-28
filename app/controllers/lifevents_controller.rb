@@ -1,10 +1,18 @@
 class LifeventsController < ApplicationController
+  def home
+  end
+
+  def personal
+    @lifevents = Lifevent.all
+  end
+
   def index
     @lifevents = Lifevent.all
   end
 
   def show
     @lifevent = Lifevent.find(params[:id])
+    @lifelift = Lifelift.new
   end
 
   def new
@@ -13,12 +21,16 @@ class LifeventsController < ApplicationController
 
   def create
     @lifevent = Lifevent.new
+
+    @lifevent.user_id = params[:user_id]
     @lifevent.life_topic = params[:life_topic]
     @lifevent.urgency = params[:urgency]
     @lifevent.story = params[:story]
 
-    if @lifevent.save
-      redirect_to "/lifevents", :notice => "Lifevent created successfully."
+    if @lifevent.save && @lifevent.urgency > 7
+      redirect_to "/lifevents", :notice => "lifevent created. Consider Seeking Professional Help at <a href= 'https://therapists.psychologytoday.com/rms/'>https://therapists.psychologytoday.com/rms/</a>"
+    elsif @lifevent.save && @lifevent.urgency <= 7
+      redirect_to "/lifevents", :notice => "Lifevent created."
     else
       render 'new'
     end
@@ -31,14 +43,17 @@ class LifeventsController < ApplicationController
   def update
     @lifevent = Lifevent.find(params[:id])
 
+    @lifevent.user_id = params[:user_id]
     @lifevent.life_topic = params[:life_topic]
     @lifevent.urgency = params[:urgency]
     @lifevent.story = params[:story]
 
-    if @lifevent.save
-      redirect_to "/lifevents", :notice => "Lifevent updated successfully."
+    if @lifevent.save && @lifevent.urgency > 7
+      redirect_to "/lifevents", :notice => "Lifevent created. Consider Seeking Professional Help at <a href= 'https://therapists.psychologytoday.com/rms/'>https://therapists.psychologytoday.com/rms/</a>"
+    elsif @lifevent.save && @lifevent.urgency <= 7
+      redirect_to "/lifevents",:notice => "Lifevent created."
     else
-      render 'edit'
+      render 'new'
     end
   end
 

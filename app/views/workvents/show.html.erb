@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Workvent #<%= @workvent.id %></h3>
+  <h3>Workvent on <%= @workvent.work_topic %></h3>
 </div>
 
 <div class="row">
@@ -13,19 +13,85 @@
 
       <dt>Story</dt>
       <dd><%= @workvent.story %></dd>
-
     </dl>
+
+
+  <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>Support</th>
+          </tr>
+          <% @workvent.worklifts.each do |worklift| %>
+          <tr>
+            <td><%= worklift.support %></td>
+          </tr>
+          <tr>
+            <% if worklift.user_id.to_i == current_user.id.to_i %>
+            <td><div class="btn-group">
+              <a href="/worklifts/<%= worklift.id %>/edit" class="btn btn-warning">
+                Edit
+              </a>
+              <a href="/delete_worklift/<%= worklift.id %>" class="btn btn-danger" rel="nofollow">
+                Delete
+              </a>
+            <% end %>
+            </div>
+          </td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+
+<!--     <dt>Support</dt>
+    <dd>
+      <ul class="list-group">
+        <% @workvent.worklifts.each do |worklift| %>
+        <li class="list-group-item">
+          <%= worklift.support %>
+        </li>
+        <% end %>
+      </ul>
+    </dd> -->
+
+    <div>
+    <li class="list-group-item">
+      <form action="/create_worklift" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <!-- Label and input for user_id -->
+        <input name="user_id" class="hidden" value="<%= current_user.id %>">
+
+        <input name="workvent_id" class="hidden" value="<%= @workvent.id %>"
+
+        <div class="form-group">
+
+          <textarea id="support" name="support" placeholder="" class="form-control" rows="3"><%= @worklift.support %></textarea>
+        <td></td>
+        <button class="btn btn-stop">
+          Post Support
+        </button>
+        </div>
+      </form>
+    </li>
+    </div>
 
     <div class="btn-group btn-group-justified">
       <a href="/workvents" class="btn btn-primary">
         Back
       </a>
-      <a href="/workvents/<%= @workvent.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_workvent/<%= @workvent.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+    </div>
+    <% if @workvent.user_id.to_i == current_user.id.to_i %>
+    <div class="btn-group btn-group-justified">
+    <a href="/workvents/<%= @workvent.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_workvent/<%= @workvent.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
+    <% end %>
     </div>
   </div>
-</div>
+  </div>

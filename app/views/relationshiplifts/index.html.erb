@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Relationshiplifts
+    <a href="/relationshiplifts/new" class="btn btn-lg btn-success">New Relationshiplift</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Relationshipvent</th>
+        <th>Support</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @relationshiplifts.each do |relationshiplift| %>
+      <tr>
+        <td><%= relationshiplift.user_id %></td>
+        <td><%= relationshiplift.relationshipvent_id %></td>
+        <td><%= relationshiplift.support %></td>
+        <td>
+          <a href="/relationshiplifts/<%= relationshiplift.id %>" class="btn btn-primary">Show</a>
+          <a href="/relationshiplifts/<%= relationshiplift.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_relationshiplift/<%= relationshiplift.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

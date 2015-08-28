@@ -12,11 +12,14 @@
   <h3>Edit Relationshipvent #<%= @relationshipvent.id %></h3>
 </div>
 
+
 <div class="row">
   <div class="col-md-12">
     <form action="/update_relationshipvent/<%= @relationshipvent.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <input name="user_id" type="hidden" value="<%= current_user.id %>">
 
       <!-- Label and input for relationship_topic -->
       <div class="form-group">
@@ -33,20 +36,19 @@
           Urgency
         </label>
   <select name="urgency">
-  <option value="1"selected>1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="7">7</option>
-  <option value="8">8</option>
-  <option value="9">9</option>
-  <option value="10">10</option>
+  <%= urgency_level = @relationshipvent.urgency %>
+  <option value="1" <%= "selected" if urgency_level == 1%>>1</option>
+  <option value="2" <%= "selected" if urgency_level == 2%>>2</option>
+  <option value="3" <%= "selected" if urgency_level == 3%>>3</option>
+  <option value="4" <%= "selected" if urgency_level == 4%>>4</option>
+  <option value="5" <%= "selected" if urgency_level == 5%>>5</option>
+  <option value="6" <%= "selected" if urgency_level == 6%>>6</option>
+  <option value="7" <%= "selected" if urgency_level == 7%>>7</option>
+  <option value="8" <%= "selected" if urgency_level == 8%>>8</option>
+  <option value="9" <%= "selected" if urgency_level == 9%>>9</option>
+  <option value="10" <%= "selected" if urgency_level == 10%>>10</option>
 </select>
-    </div>
 
-      </div>
 
       <!-- Label and input for story -->
       <div class="form-group">
@@ -64,4 +66,7 @@
       <a href="/relationshipvents/<%= @relationshipvent.id %>">Cancel</a>
     </form>
   </div>
-</div>
+    </div>
+
+      </div>
+

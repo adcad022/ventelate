@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Lifevent #<%= @lifevent.id %></h3>
+  <h3>Lifevent on <%= @lifevent.life_topic %></h3>
 </div>
 
 <div class="row">
@@ -16,16 +16,72 @@
 
     </dl>
 
+      <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>Support</th>
+          </tr>
+          <% @lifevent.lifelifts.each do |lifelift| %>
+          <tr>
+            <td><%= lifelift.support %></td>
+          </tr>
+          <tr>
+            <% if lifelift.user_id.to_i == current_user.id.to_i %>
+            <td><div class="btn-group">
+              <a href="/lifelifts/<%= lifelift.id %>/edit" class="btn btn-warning">
+                Edit
+              </a>
+              <a href="/delete_lifelift/<%= lifelift.id %>" class="btn btn-danger" rel="nofollow">
+                Delete
+              </a>
+            <% end %>
+            </div>
+          </td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+
+    <div>
+    <li class="list-group-item">
+      <form action="/create_lifelift" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <!-- Label and input for user_id -->
+        <input name="user_id" class="hidden" value="<%= current_user.id %>">
+
+        <input name="lifevent_id" class="hidden" value="<%= @lifevent.id %>"
+
+        <div class="form-group">
+
+          <textarea id="support" name="support" placeholder="" class="form-control" rows="3"><%= @lifelift.support %></textarea>
+        <td></td>
+        <button class="btn btn-stop">
+          Post Support
+        </button>
+        </div>
+      </form>
+    </li>
+    </div>
+
+
     <div class="btn-group btn-group-justified">
       <a href="/lifevents" class="btn btn-primary">
         Back
       </a>
-      <a href="/lifevents/<%= @lifevent.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_lifevent/<%= @lifevent.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      </div>
+    <div class="btn-group btn-group-justified">
+        <% if @lifevent.user_id.to_i == current_user.id.to_i %>
+    <a href="/lifevents/<%= @lifevent.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_lifevent/<%= @lifevent.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
+    <% end %>
     </div>
-  </div>
+    </div>
 </div>

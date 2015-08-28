@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Lifelifts
+    <a href="/lifelifts/new" class="btn btn-lg btn-success">New Lifelift</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Lifevent</th>
+        <th>Support</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @lifelifts.each do |lifelift| %>
+      <tr>
+        <td><%= lifelift.user_id %></td>
+        <td><%= lifelift.lifevent_id %></td>
+        <td><%= lifelift.support %></td>
+        <td>
+          <a href="/lifelifts/<%= lifelift.id %>" class="btn btn-primary">Show</a>
+          <a href="/lifelifts/<%= lifelift.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_lifelift/<%= lifelift.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

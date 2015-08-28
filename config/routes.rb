@@ -1,5 +1,74 @@
 Rails.application.routes.draw do
 
+  # Routes for the Relationshiplift resource:
+  # CREATE
+  get "/relationshiplifts/new", :controller => "relationshiplifts", :action => "new"
+  post "/create_relationshiplift", :controller => "relationshiplifts", :action => "create"
+
+  # READ
+  get "/relationshiplifts", :controller => "relationshiplifts", :action => "index"
+  get "/relationshiplifts/:id", :controller => "relationshiplifts", :action => "show"
+
+  # UPDATE
+  get "/relationshiplifts/:id/edit", :controller => "relationshiplifts", :action => "edit"
+  post "/update_relationshiplift/:id", :controller => "relationshiplifts", :action => "update"
+
+  # DELETE
+  get "/delete_relationshiplift/:id", :controller => "relationshiplifts", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Otherlift resource:
+  # CREATE
+  get "/otherlifts/new", :controller => "otherlifts", :action => "new"
+  post "/create_otherlift", :controller => "otherlifts", :action => "create"
+
+  # READ
+  get "/otherlifts", :controller => "otherlifts", :action => "index"
+  get "/otherlifts/:id", :controller => "otherlifts", :action => "show"
+
+  # UPDATE
+  get "/otherlifts/:id/edit", :controller => "otherlifts", :action => "edit"
+  post "/update_otherlift/:id", :controller => "otherlifts", :action => "update"
+
+  # DELETE
+  get "/delete_otherlift/:id", :controller => "otherlifts", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Lifelift resource:
+  # CREATE
+  get "/lifelifts/new", :controller => "lifelifts", :action => "new"
+  post "/create_lifelift", :controller => "lifelifts", :action => "create"
+
+  # READ
+  get "/lifelifts", :controller => "lifelifts", :action => "index"
+  get "/lifelifts/:id", :controller => "lifelifts", :action => "show"
+
+  # UPDATE
+  get "/lifelifts/:id/edit", :controller => "lifelifts", :action => "edit"
+  post "/update_lifelift/:id", :controller => "lifelifts", :action => "update"
+
+  # DELETE
+  get "/delete_lifelift/:id", :controller => "lifelifts", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Worklift resource:
+  # CREATE
+  get "/worklifts/new", :controller => "worklifts", :action => "new"
+  post "/create_worklift", :controller => "worklifts", :action => "create"
+
+  # READ
+  get "/worklifts", :controller => "worklifts", :action => "index"
+  get "/worklifts/:id", :controller => "worklifts", :action => "show"
+
+  # UPDATE
+  get "/worklifts/:id/edit", :controller => "worklifts", :action => "edit"
+  post "/update_worklift/:id", :controller => "worklifts", :action => "update"
+
+  # DELETE
+  get "/delete_worklift/:id", :controller => "worklifts", :action => "destroy"
+
+  #------------------------------
+
   # Routes for the Othervent resource:
   # CREATE
   get "/othervents/new", :controller => "othervents", :action => "new"
@@ -8,6 +77,7 @@ Rails.application.routes.draw do
   # READ
   get "/othervents", :controller => "othervents", :action => "index"
   get "/othervents/:id", :controller => "othervents", :action => "show"
+  get "/otherpersonal", :controller => "othervents", :action => "personal"
 
   # UPDATE
   get "/othervents/:id/edit", :controller => "othervents", :action => "edit"
@@ -18,6 +88,8 @@ Rails.application.routes.draw do
   #------------------------------
 
   # Routes for the Lifevent resource:
+    # HOME
+  get "/", :controller => "lifevents", :action => "home"
   # CREATE
   get "/lifevents/new", :controller => "lifevents", :action => "new"
   post "/create_lifevent", :controller => "lifevents", :action => "create"
@@ -25,6 +97,7 @@ Rails.application.routes.draw do
   # READ
   get "/lifevents", :controller => "lifevents", :action => "index"
   get "/lifevents/:id", :controller => "lifevents", :action => "show"
+  get "/lifepersonal", :controller => "lifevents", :action => "personal"
 
   # UPDATE
   get "/lifevents/:id/edit", :controller => "lifevents", :action => "edit"
@@ -42,6 +115,7 @@ Rails.application.routes.draw do
   # READ
   get "/relationshipvents", :controller => "relationshipvents", :action => "index"
   get "/relationshipvents/:id", :controller => "relationshipvents", :action => "show"
+  get "/relationshippersonal", :controller => "relationshipvents", :action => "personal"
 
   # UPDATE
   get "/relationshipvents/:id/edit", :controller => "relationshipvents", :action => "edit"
@@ -59,6 +133,7 @@ Rails.application.routes.draw do
   # READ
   get "/workvents", :controller => "workvents", :action => "index"
   get "/workvents/:id", :controller => "workvents", :action => "show"
+  get "/workpersonal", :controller => "workvents", :action => "personal"
 
   # UPDATE
   get "/workvents/:id/edit", :controller => "workvents", :action => "edit"
@@ -87,8 +162,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   # Routes for the Vent resource:
-  # HOME
-  get "/", :controller => "vents", :action => "home"
   # CREATE
   get "/vents/new", :controller => "vents", :action => "new"
   post "/create_vent", :controller => "vents", :action => "create"
@@ -104,8 +177,6 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_vent/:id", :controller => "vents", :action => "destroy"
   #------------------------------
-
-root "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

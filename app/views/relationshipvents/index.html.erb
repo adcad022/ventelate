@@ -2,6 +2,7 @@
   <h1>
     Relationshipvents
     <a href="/relationshipvents/new" class="btn btn-lg btn-success">New Relationshipvent</a>
+    <a href="/relationshippersonal" class="btn btn-lg btn-success">See Personal Vents</a>
   </h1>
 </div>
 
@@ -12,7 +13,7 @@
         <th>Relationship topic</th>
         <th>Urgency</th>
         <th>Story</th>
-        <th>Reply</th>
+        <th></th>
       </tr>
 
       <% @relationshipvents.each do |relationshipvent| %>
@@ -21,8 +22,9 @@
         <td><%= relationshipvent.urgency %></td>
         <td><%= relationshipvent.story %></td>
         <td>
-          <a href="/responses/new" class="glyphicon glyphicon-heart-empty"></a>
+          <a href="/relationshipvents/<%= relationshipvent.id %>" class="btn btn-primary">Show</a>
         </td>
+
         <!-- <td>
           <a href="/relationshipvents/<%= relationshipvent.id %>" class="btn btn-primary">Show</a>
           <a href="/relationshipvents/<%= relationshipvent.id %>/edit" class="btn btn-warning">Edit</a>

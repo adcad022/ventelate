@@ -2,6 +2,7 @@
   <h1>
     Othervents
     <a href="/othervents/new" class="btn btn-lg btn-success">New Othervent</a>
+    <a href="/otherpersonal" class="btn btn-lg btn-success">See Personal Vents</a>
   </h1>
 </div>
 
@@ -12,7 +13,7 @@
         <th>Other topic</th>
         <th>Urgency</th>
         <th>Story</th>
-        <th>Reply</th>
+        <th></th>
       </tr>
 
       <% @othervents.each do |othervent| %>
@@ -21,7 +22,7 @@
         <td><%= othervent.urgency %></td>
         <td><%= othervent.story %></td>
         <td>
-          <a href="/responses/new" class="glyphicon glyphicon-heart-empty"></a>
+          <a href="/othervents/<%= othervent.id %>" class="btn btn-primary">Show</a>
         </td>
         <!-- <td>
           <a href="/othervents/<%= othervent.id %>" class="btn btn-primary">Show</a>

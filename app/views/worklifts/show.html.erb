@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Worklift #<%= @worklift.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>User</dt>
+      <dd><%= @worklift.user_id %></dd>
+
+      <dt>Workvent</dt>
+      <dd><%= @worklift.workvent_id %></dd>
+
+      <dt>Support</dt>
+      <dd><%= @worklift.support %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/worklifts" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/worklifts/<%= @worklift.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_worklift/<%= @worklift.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>
+    Othervents by <%= current_user.email %>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Other topic</th>
+        <th>Urgency</th>
+        <th>Story</th>
+        <th></th>
+      </tr>
+
+      <% @othervents.each do |othervent| %>
+
+      <% if othervent.user_id.to_i == current_user.id.to_i %>
+      <tr>
+        <td><%= othervent.other_topic %></td>
+        <td><%= othervent.urgency %></td>
+        <td><%= othervent.story %></td>
+        <td>
+          <a href="/othervents/<%= othervent.id %>" class="btn btn-primary">Show</a>
+        </td>
+          <!-- <a href="/othervents/<%= othervent.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_othervent/<%= othervent.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td> -->
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

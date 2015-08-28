@@ -2,6 +2,7 @@
   <h1>
     Workvents
     <a href="/workvents/new" class="btn btn-lg btn-success">New Workvent</a>
+    <a href="/workpersonal" class="btn btn-lg btn-success">See Personal Vents</a>
   </h1>
 </div>
 
@@ -12,7 +13,8 @@
         <th>Work topic</th>
         <th>Urgency</th>
         <th>Story</th>
-        <th>Reply</th>
+        <th>user id</th>
+        <th></th>
       </tr>
 
       <% @workvents.each do |workvent| %>
@@ -20,12 +22,11 @@
         <td><%= workvent.work_topic %></td>
         <td><%= workvent.urgency %></td>
         <td><%= workvent.story %></td>
+        <td><%= workvent.user_id %></td>
         <td>
-          <a href="/responses/new" class="glyphicon glyphicon-heart-empty"></a>
-        </td>
-        <!-- <td>
           <a href="/workvents/<%= workvent.id %>" class="btn btn-primary">Show</a>
-          <a href="/workvents/<%= workvent.id %>/edit" class="btn btn-warning">Edit</a>
+        </td>
+          <!-- <a href="/workvents/<%= workvent.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_workvent/<%= workvent.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td> -->
       </tr>

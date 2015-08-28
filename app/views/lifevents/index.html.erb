@@ -2,6 +2,7 @@
   <h1>
     Lifevents
     <a href="/lifevents/new" class="btn btn-lg btn-success">New Lifevent</a>
+    <a href="/lifepersonal" class="btn btn-lg btn-success">See Personal Vents</a>
   </h1>
 </div>
 
@@ -12,8 +13,7 @@
         <th>Life topic</th>
         <th>Urgency</th>
         <th>Story</th>
-        <th>Reply</th>
-        <th><
+        <th></th>
       </tr>
 
       <% @lifevents.each do |lifevent| %>
@@ -21,9 +21,6 @@
         <td><%= lifevent.life_topic %></td>
         <td><%= lifevent.urgency %></td>
         <td><%= lifevent.story %></td>
-        <td>
-          <a href="/responses/new" class="glyphicon glyphicon-heart-empty"></a>
-        </td>
         <td>
         <a href="/lifevents/<%= lifevent.id %>" class="btn btn-primary">Show</a>
         </td>

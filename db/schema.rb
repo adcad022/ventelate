@@ -11,7 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825155507) do
+ActiveRecord::Schema.define(version: 20150826204700) do
+
+  create_table "lifeaids", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "lifeaid_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lifehelps", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lifelifts", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "lifevent_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "liferes", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lifevents", force: :cascade do |t|
     t.string   "life_topic"
@@ -19,6 +49,37 @@ ActiveRecord::Schema.define(version: 20150825155507) do
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_id"
+  end
+
+  create_table "otheraids", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "otheraid_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "otherhelps", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "otherlifts", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "othervent_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "otherres", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "othervents", force: :cascade do |t|
@@ -27,6 +88,37 @@ ActiveRecord::Schema.define(version: 20150825155507) do
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_id"
+  end
+
+  create_table "relationshipaids", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "relationshipaid_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationshiphelps", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationshiplifts", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "relationshipvent_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationshipres", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationshipvents", force: :cascade do |t|
@@ -35,6 +127,14 @@ ActiveRecord::Schema.define(version: 20150825155507) do
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_id"
+  end
+
+  create_table "reslives", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "responses", force: :cascade do |t|
@@ -81,12 +181,51 @@ ActiveRecord::Schema.define(version: 20150825155507) do
     t.datetime "updated_at"
   end
 
+  create_table "worhelps", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "othervent_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workaids", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "workaid_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workhelps", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "worklifts", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "workvent_id"
+    t.text     "support"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workres", force: :cascade do |t|
+    t.string   "user"
+    t.text     "support"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "workvents", force: :cascade do |t|
     t.string   "work_topic"
     t.integer  "urgency"
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_id"
   end
 
 end
